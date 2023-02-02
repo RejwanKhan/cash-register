@@ -58,8 +58,15 @@ const cashRegister = (price, cash, cid) => {
 
   if (change === cashInDrawValue) {
     object.status = "CLOSED";
-    const noChange = cid.map((item) => (item[1] = 0));
-    object.change = noChange;
+    // console.log(cid);
+    const noChange = [...cid].map((item) => {
+      item[1] = 0;
+      // console.log([item[0], item[1]]);
+      return item[0], item[1];
+    });
+    // console.log(cid);
+
+    object.change = cid;
     return `status: ${object.status}, change: ${object.change}`;
   }
 
@@ -68,16 +75,16 @@ const cashRegister = (price, cash, cid) => {
   }
 };
 
-console.log(test1.reduce((acc, val) => acc + val[1], 0).toFixed(2));
+// console.log(test1.reduce((acc, val) => acc + val[1], 0).toFixed(2));
 
 // console.log(cashRegister(10, 11, test1));
 
 //testcases
 
-// const test2 = cashRegister(3, 5, test1); // Fargo
-// const test3 = cashRegister(5, 1, test1); // Incorrect Payement
+const test2 = cashRegister(3, 5, test1); // Fargo
+const test3 = cashRegister(5, 1, test1); // Incorrect Payement
 const test4 = cashRegister(1, 336.41, test1); // Closed
 
-// console.log(test2);
-// console.log(test3);
+console.log(test2);
+console.log(test3);
 console.log(test4);
