@@ -29,7 +29,8 @@ const cashRegister = (price, cash, cid) => {
 
   if (change > cashInDrawValue) {
     object.status = "INSUFFICIENT_FUNDS";
-    return `status : ${object.status}, change ${object.change}`;
+
+    return object;
   }
 
   //STEP 3
