@@ -13,12 +13,19 @@ cashRegister(19.5, 20, [
 
 //Rejwan khan
 
+
 const cashRegister = (price, cash, cid) => {
   let change;
-  change = cash - price;
-  
+
+  //Getting the change value by cash - price
+  //change = cash - price;
+
+  //Return {status: "INCORRECT_PAYMENT", change: []} if cash is less than the price.
   if(cash < price) {
-    
-    return {status: "INCORRECT_PAYMENT", change};
-  } 
+    return {status: "INCORRECT_PAYMENT", change: []};
+  }
+  
 }
+
+
+
