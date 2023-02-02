@@ -15,7 +15,7 @@ cashRegister(19.5, 20, [
 
 
 const cashRegister = (price, cash, cid) => {
-  let change;
+  let change = [0];
 
   //Getting the change value by cash - price
   //change = cash - price;
@@ -24,8 +24,37 @@ const cashRegister = (price, cash, cid) => {
   if(cash < price) {
     return {status: "INCORRECT_PAYMENT", change: []};
   }
+
+  if (cid < change){
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+
+  if (cid === change){
+    return {status: "CLOSED", change: cid};
+  } 
+  return { status: "OPEN", change: change };
+
   
 }
+
+
+  
+  
+
+
+
+
+let change = [];
+cid = cid.reverse();
+
+for (let i = 0; i < cid.length; i++){
+  let currency = cid[i][0];
+  let value = currencyValues 
+}
+
+
+
+
 
 
 
