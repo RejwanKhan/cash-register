@@ -11,6 +11,7 @@ cashRegister(19.5, 20, [
   ["ONE HUNDRED", 100],
 ]);
 
+//Rejwan khan
 
 const cashRegister = (price, cost, cid) => {
   
