@@ -12,6 +12,6 @@ cashRegister(19.5, 20, [
 ]);
 
 
-const cashRegister = (price, cost, cid) = {
+const cashRegister = (price, cost, cid) => {
   
 }
