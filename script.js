@@ -17,7 +17,7 @@ cashRegister(19.5, 20, [
 const cashRegister = (price, cash, cid) => {
   let change = [0];
 
-  const currency = {
+  const currencyValue = {
     PENNY: 0.01,
     NICKEL: 0.05,
     DIME: 0.1,
@@ -25,8 +25,8 @@ const cashRegister = (price, cash, cid) => {
     ONE: 1,
     FIVE: 5,
     TEN: 10,
-    
-  }
+    ONE_HUNDRED: 100
+  };
 
   //Getting the change value by cash - price
   //change = cash - price;
@@ -48,26 +48,26 @@ const cashRegister = (price, cash, cid) => {
   
 }
  
-
-  
-  
-
-
-
-
 let change = [];
 cid = cid.reverse();
 
-for (let i = 0; i < cid.length; i++){
-  let currency = cid[i][0];
-  let value = currencyValues[currency];
-  let amount = cid[i][1];
-  let unitCount = 0; 
-}
+  for (let i = 0; i < cid.length; i++) {
+    let currencyUnit = cid[i][0];
+    let value = currencyValues[currencyUnit];
+    let amount = cid[i][1];
+    let unitCount = 0;
 
 
+    while (change >= value && amount > 0) {
+      changeDue -= value;
+      amount -= value;
+      unitCount++;
+    }
+
+    change = Math.round(changeDue * 100) / 100;
 
 
-
-
-
+    if (unitCount > 0) {
+      change.push([currencyUnit, unitCount * value]);
+    }
+  }
