@@ -12,3 +12,7 @@ cashRegister(19.5, 20, [
 ]);
 
 //Rejwan khan
+
+const cashRegister = (price, cost, cid) = {
+  
+}
