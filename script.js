@@ -13,6 +13,12 @@ cashRegister(19.5, 20, [
 
 //Rejwan khan
 
-const cashRegister = (price, cost, cid) => {
+const cashRegister = (price, cash, cid) => {
+  let change;
+  change = cash - price;
   
+  if(cash < price) {
+    
+    return {status: "INCORRECT_PAYMENT", change};
+  } 
 }
