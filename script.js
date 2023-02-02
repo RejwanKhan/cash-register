@@ -36,16 +36,48 @@ const test1 = [
 
 //Rejwan khan
 
-const cashRegister = (price, cost, cid) => {
+const cashRegister = (price, cash, cid) => {
   const object = { status: "", change: [] };
-  const change = price - cost;
+  // const change = price - cash;
+  const change = cash - price;
+  // console.log(change, "b", typeof change);
 
   if (change < 0) {
     object.status = "INCORRECT_PAYMENT";
     return `status : ${object.status}, change " ${object.change}`;
   }
 
-  const cashInDrawValue = cid.reduce((acc, val) => acc + val[1], 0);
+  const cashInDrawValue = Number(
+    cid.reduce((acc, val) => acc + val[1], 0).toFixed(2)
+  );
+  // console.log(cashInDrawValue, "a", typeof cashInDrawValue);
+  if (change > cashInDrawValue) {
+    object.status = "INSUFFICIENT_FUNDS";
+    return `status : ${object.status}, change ${object.change}`;
+  }
+
+  if (change === cashInDrawValue) {
+    object.status = "CLOSED";
+    const noChange = cid.map((item) => (item[1] = 0));
+    object.change = noChange;
+    return `status: ${object.status}, change: ${object.change}`;
+  }
+
+  if (change > 0 && change < cashInDrawValue) {
+    return "Fargo";
+  }
 };
 
 console.log(test1.reduce((acc, val) => acc + val[1], 0).toFixed(2));
+
+// console.log(cashRegister(10, 11, test1));
+
+//testcases
+
+// const test2 = cashRegister(3, 5, test1); // Fargo
+// const test3 = cashRegister(5, 1, test1); // Incorrect Payement
+const test4 = cashRegister(1, 336.41, test1); // Closed
+
+// console.log(test2);
+// console.log(test3);
+console.log(test4);
