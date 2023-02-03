@@ -60,12 +60,12 @@ function cashRegister(price, cash, cid) {
 let price = 0;
 const checkout = document.querySelector(".checkout")
 
-const kitkat = document.getElementById("Kitkat")
+const kitkat = document.querySelector("#KitKat")
 const oreo = document.querySelector("#Oreo")
-const kinderBueno = document.querySelector("#Kinder Bueno")
-const dairyMilk = document.querySelector("#Dairy Milk")
+const kinderBueno = document.querySelector("#KinderBueno")
+const dairyMilk = document.querySelector("#DairyMilk")
 const twix  = document.querySelector("#Twix")
-const malteasers = document.querySelector("Maltesers")
+const malteasers = document.querySelector("#Maltesers")
 const flake = document.querySelector("#Flake")  
 const bounty = document.querySelector("#Bounty")
 const mars = document.querySelector("#Mars")
@@ -73,69 +73,71 @@ const total = document.querySelector(".total")
 
 
 
-kitKat.addEventListener('click', () => {
-  let cashIng = kitKat.outerText.substring(1);
+
+
+
+oreo.addEventListener('click', () => {
+let cashIng = oreo.outerText.substring(1);
+price += Number (cashIng);
+console.log(cashIng);
+total.textContent =`Total: $` + Number(price).toFixed(2);
+})
+
+kitkat.addEventListener('click', () => {
+  let cashIng = kitkat.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+  })
+
+kinderBueno.addEventListener('click', () => {
+  let cashIng = kinderBueno.outerText.substring(1);
   price += Number (cashIng);
   console.log(cashIng);
   total.textContent =`Total: $` + Number(price).toFixed(2);
 })
 
+dairyMilk.addEventListener('click', () => {
+  let cashIng = dairyMilk.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
-// oreo.addEventListener('click', () => {
-//   let cashIng = oreo.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+twix.addEventListener('click', () => {
+  let cashIng = twix.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
-// kinderBueno.addEventListener('click', () => {
-//   let cashIng = kinderBueno.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+flake.addEventListener('click', () => {
+  let cashIng = flake.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
-// dairyMilk.addEventListener('click', () => {
-//   let cashIng = dairyMilk.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+malteasers.addEventListener('click', () => {
+  let cashIng = malteasers.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
-// twix.addEventListener('click', () => {
-//   let cashIng = twix.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+bounty.addEventListener('click', () => {
+  let cashIng = bounty.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
-// flake.addEventListener('click', () => {
-//   let cashIng = flake.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
-
-// malteasers.addEventListener('click', () => {
-//   let cashIng = malteasers.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
-
-// bounty.addEventListener('click', () => {
-//   let cashIng = bounty.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
-
-// mars.addEventListener('click', () => {
-//   let cashIng = mars.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+mars.addEventListener('click', () => {
+  let cashIng = mars.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
 
 
 
