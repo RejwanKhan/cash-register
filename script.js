@@ -11,63 +11,48 @@ cashRegister(19.5, 20, [
   ["ONE HUNDRED", 100],
 ]);
 
-//Rejwan khan
-
-
-const cashRegister = (price, cash, cid) => {
-  let change = [0];
-
-  const currencyValue = {
-    PENNY: 0.01,
-    NICKEL: 0.05,
-    DIME: 0.1,
-    QUARTER: 0.25,
-    ONE: 1,
-    FIVE: 5,
-    TEN: 10,
-    ONE_HUNDRED: 100
+function cashRegister(price, cash, cid) {
+  const currency = {
+    "ONE HUNDRED": {value: 100.0},
+    "TWENTY": {value: 20.0}, 
+    "TEN": {value: 10.0}, 
+    "FIVE": {value: 5.0}, 
+    "ONE": {value: 1.0}, 
+    "QUARTER": {value: 0.25}, 
+    "DIME": {value: 0.1}, 
+    "NICKEL": {value: 0.05}, 
+    "PENNY": {value: 0.01}
   };
-
-  //Getting the change value by cash - price
-  //change = cash - price;
-
-  //Return {status: "INCORRECT_PAYMENT", change: []} if cash is less than the price.
-  if(cash < price) {
-    return {status: "INCORRECT_PAYMENT", change: []};
+  let changeDue = cash - price;
+  let cidTotal = cid.reduce((sum, current) => sum + current[1], 0.0);
+  if (cash < price){
+        change = [0];
+          return { status: "INCORRECT_PAYMENT", change: [] };
   }
-
-  if (cid < change){
-    return {status: "INSUFFICIENT_FUNDS", change: []};
+  if (changeDue > cidTotal) {
+    return { status: "INSUFFICIENT_FUNDS", change: [] };
+  } else if (changeDue === cidTotal) {
+    return { status: "CLOSED", change: cid };
+  } else {
+    let returnList = [];
+    for (d of cid.reverse()) {
+      returnList.unshift([d[0],0]);
+      denomination = d[0];
+      tillBalance = d[1];
+      while (
+          tillBalance > 0 && 
+          changeDue >= currency[denomination].value) {
+              tillBalance -= currency[denomination].value;
+              tillBalance = Number.parseFloat(tillBalance).toFixed(2);
+              changeDue -= currency[denomination].value;
+              changeDue = Number.parseFloat(changeDue).toFixed(2);
+              returnList[0][1] = returnList[0][1] + currency[denomination].value;
+          }
+          if (returnList[0][1] === 0) returnList.shift();
+      }
+    if (changeDue > 0) {
+      return { status: "INSUFFICIENT_FUNDS", change: [] };
+    }
+    return { status: "OPEN", change: returnList };
   }
-
-  if (cid === change){
-    return {status: "CLOSED", change: cid};
-  } 
-  return { status: "OPEN", change: change };
-
-  
 }
- 
-let change = [];
-cid = cid.reverse();
-
-  for (let i = 0; i < cid.length; i++) {
-    let currencyUnit = cid[i][0];
-    let value = currencyValues[currencyUnit];
-    let amount = cid[i][1];
-    let unitCount = 0;
-
-
-    while (change >= value && amount > 0) {
-      changeDue -= value;
-      amount -= value;
-      unitCount++;
-    }
-
-    change = Math.round(changeDue * 100) / 100;
-
-
-    if (unitCount > 0) {
-      change.push([currencyUnit, unitCount * value]);
-    }
-  }
