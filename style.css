@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Marko+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #FBFBFF;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    background-color: rgb(196, 181, 181);
+    background-color: #23395B;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    padding: 10px;
+    font-family: "Kanit";
+}
+
+h4 {
+    text-align: center;
+}
+
+header {
+    background-color: #59C9A5;
+    margin: 0 auto;
+    margin-bottom: 8rem;
+    
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 3px solid black; */
+    padding: 3rem;
+    margin: 2rem;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.chocolate {
+    width: 320px;
+    height: 320px;
+    margin: 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center ;
+    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+}
+img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    box-shadow: 10px 10px 10px grey;
+    margin-bottom: 8px;
+}
+
+
+.checkout{
+    display: block;
+    text-align: center;
+    color: white;
+    width: max-content;
+    font-size: 68px;
+    margin: auto;
+    border-radius: 13px;
+    background-color: #59C9A5;
+    padding: 0px 15px;
+    letter-spacing: 5px;
+}
+
+label{
+    display:block;
+    border-top: 10px dashed #59C9A5;
+    width: 100vw;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 68px;
+
+}
