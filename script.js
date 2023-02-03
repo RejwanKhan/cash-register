@@ -21,70 +21,173 @@ const test1 = [
   ["TWENTY", 60],
   ["ONE HUNDRED", 100],
 ];
-// Example function call
-// cashRegister(19.5, 20, [
-//   ["PENNY", 1.01],
-//   ["NICKEL", 2.05],
-//   ["DIME", 3.1],
-//   ["QUARTER", 4.25],
-//   ["ONE", 90],
-//   ["FIVE", 55],
-//   ["TEN", 20],
-//   ["TWENTY", 60],
-//   ["ONE HUNDRED", 100],
-// ]);
-
-//Rejwan khan
 
 const cashRegister = (price, cash, cid) => {
+  //STEP 1
   const object = { status: "", change: [] };
-  // const change = price - cash;
+
   const change = cash - price;
-  // console.log(change, "b", typeof change);
 
   if (change < 0) {
     object.status = "INCORRECT_PAYMENT";
-    return `status : ${object.status}, change " ${object.change}`;
+    return object;
   }
+
+  //STEP 2
 
   const cashInDrawValue = Number(
     cid.reduce((acc, val) => acc + val[1], 0).toFixed(2)
   );
-  // console.log(cashInDrawValue, "a", typeof cashInDrawValue);
+
   if (change > cashInDrawValue) {
     object.status = "INSUFFICIENT_FUNDS";
-    return `status : ${object.status}, change ${object.change}`;
+
+    return object;
   }
 
+  //STEP 3
   if (change === cashInDrawValue) {
     object.status = "CLOSED";
-    // console.log(cid);
-    const noChange = [...cid].map((item) => {
+    const noChange = [];
+    const copy = [...cid];
+    const cidValues = copy.map((item) => {
       item[1] = 0;
-      // console.log([item[0], item[1]]);
-      return item[0], item[1];
+      noChange.push(item);
     });
-    // console.log(cid);
 
-    object.change = cid;
-    return `status: ${object.status}, change: ${object.change}`;
+    object.change = noChange;
+    return object;
   }
 
   if (change > 0 && change < cashInDrawValue) {
-    return "Fargo";
+    object.status = "OPEN";
+
+    let i = 0;
+    let tempChange = change;
+    let customerChange = [];
+
+    while (tempChange !== 0) {
+      let currentChange = cid[i][1];
+
+      if (tempChange > currentChange) {
+        tempChange -= currentChange;
+        customerChange.push([...cid[i]]);
+        cid[i][1] = 0;
+      } else if (currentChange > tempChange) {
+        cid[i][1] = tempChange;
+        customerChange.push([...cid[i]]);
+
+        currentChange -= tempChange;
+        currentChange = Number(currentChange.toFixed(2));
+
+        cid[i][1] = currentChange;
+
+        tempChange = 0;
+      }
+
+      i++;
+      if (i === cid.length) {
+        break;
+      }
+    }
+    // const filt = customerChange.filter((item, i) => item[1]); // To display change that do not = to zero (Change object.change to filt)
+    // object.change = customerChange;
+    const filt = customerChange.filter((item, i) => item[1]);
+    object.change = filt;
+    return object;
   }
 };
 
-// console.log(test1.reduce((acc, val) => acc + val[1], 0).toFixed(2));
+// console.log(cashRegister(19.5, 18, test1));
+// console.log(
+//   cashRegister(19.5, 20, [
+//     ["PENNY", 0.01],
+//     ["NICKEL", 0],
+//     ["DIME", 0],
+//     ["QUARTER", 0],
+//     ["ONE", 0],
+//     ["FIVE", 0],
+//     ["TEN", 0],
+//     ["TWENTY", 0],
+//     ["ONE HUNDRED", 0],
+//   ])
+// );
+// => {status: "INSUFFICIENT_FUNDS", change: []}
 
-// console.log(cashRegister(10, 11, test1));
+// => {status: "INSUFFICIENT_FUNDS", change: []})
 
-//testcases
+// console.log(
+//   cashRegister(19.5, 20, [
+//     ["PENNY", 0.5],
+//     ["NICKEL", 0],
+//     ["DIME", 0],
+//     ["QUARTER", 0],
+//     ["ONE", 0],
+//     ["FIVE", 0],
+//     ["TEN", 0],
+//     ["TWENTY", 0],
+//     ["ONE HUNDRED", 0],
+//   ])
+// );
+/* 
+{
+  status: "CLOSED",
+  change: [
+    ["PENNY", 0.5],
+    ["NICKEL", 0],
+    ["DIME", 0],
+    ["QUARTER", 0],
+    ["ONE", 0],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 0]
+  ]
+}
+*/
 
-const test2 = cashRegister(3, 5, test1); // Fargo
-const test3 = cashRegister(5, 1, test1); // Incorrect Payement
-const test4 = cashRegister(1, 336.41, test1); // Closed
+// console.log(
+//   cashRegister(19.5, 20, [
+//     ["PENNY", 1.01],
+//     ["NICKEL", 2.05],
+//     ["DIME", 3.1],
+//     ["QUARTER", 4.25],
+//     ["ONE", 90],
+//     ["FIVE", 55],
+//     ["TEN", 20],
+//     ["TWENTY", 60],
+//     ["ONE HUNDRED", 100],
+//   ])
+// );
 
-console.log(test2);
-console.log(test3);
-console.log(test4);
+// => {status: "OPEN", change: [["QUARTER", 0.5]]} //4A
+
+console.log(
+  cashRegister(3.26, 100, [
+    ["PENNY", 1.01],
+    ["NICKEL", 2.05],
+    ["DIME", 3.1],
+    ["QUARTER", 4.25],
+    ["ONE", 90],
+    ["FIVE", 55],
+    ["TEN", 20],
+    ["TWENTY", 60],
+    ["ONE HUNDRED", 100],
+  ])
+);
+/*
+{
+  status: "OPEN",
+  change: [
+    ["PENNY", 0.04],
+    // (no nickels since zero)
+    ["DIME", 0.2],
+    ["QUARTER", 0.5],
+    ["ONE", 1],
+    ["FIVE", 15],
+    ["TEN", 20],
+    ["TWENTY", 60]
+    // (no hundred since zero)
+  ]
+}
+*/
