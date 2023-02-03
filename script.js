@@ -57,23 +57,133 @@ function cashRegister(price, cash, cid) {
   }
 }
 
-
+let price = 0;
 const checkout = document.querySelector(".checkout")
 
+const kitkat = document.getElementById("Kitkat")
+const oreo = document.querySelector("#Oreo")
+const kinderBueno = document.querySelector("#Kinder Bueno")
+const dairyMilk = document.querySelector("#Dairy Milk")
+const twix  = document.querySelector("#Twix")
+const malteasers = document.querySelector("Maltesers")
+const flake = document.querySelector("#Flake")  
+const bounty = document.querySelector("#Bounty")
+const mars = document.querySelector("#Mars")
 const total = document.querySelector(".total")
-let price = 0;
-checkout.addEventListener('click', () => {
-  let cash = Number(prompt("Please pay the amount dued."));
 
-  cashRegister(price, cash,[
-    ["PENNY", 1.01],
-    ["NICKEL", 2.05],
-    ["DIME", 3.1],
-    ["QUARTER", 4.25],
-    ["ONE", 90],
-    ["FIVE", 55],
-    ["TEN", 20],
-    ["TWENTY", 60],
-    ["ONE HUNDRED", 100],
-  ]);
+
+
+kitKat.addEventListener('click', () => {
+  let cashIng = kitKat.outerText.substring(1);
+  price += Number (cashIng);
+  console.log(cashIng);
+  total.textContent =`Total: $` + Number(price).toFixed(2);
+})
+
+
+// oreo.addEventListener('click', () => {
+//   let cashIng = oreo.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// kinderBueno.addEventListener('click', () => {
+//   let cashIng = kinderBueno.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// dairyMilk.addEventListener('click', () => {
+//   let cashIng = dairyMilk.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// twix.addEventListener('click', () => {
+//   let cashIng = twix.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// flake.addEventListener('click', () => {
+//   let cashIng = flake.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// malteasers.addEventListener('click', () => {
+//   let cashIng = malteasers.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// bounty.addEventListener('click', () => {
+//   let cashIng = bounty.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+// mars.addEventListener('click', () => {
+//   let cashIng = mars.outerText.substring(1);
+//   price += Number (cashIng);
+//   console.log(cashIng);
+//   total.textContent =`Total: $` + Number(price).toFixed(2);
+// })
+
+
+
+
+
+
+
+console.log(document.getElementById("KitKat").outerText)
+
+
+
+
+const totalPrice = []
+
+
+
+
+// kitkat.addEventListener('click', () => {
+//   //price = price + kitkat.value;
+//   console.log(kitkat.children);
+// })
+//oreo.addEventListener('click', () => {
+//  console.log(oreo.)
+//}
+
+
+
+
+
+// kinderBueno.addEventListener("click", () => {
+//   console.log(kinderBueno.children)
+// })
+
+
+
+
+checkout.addEventListener('click', () => {
+  let cash = Number(prompt("Please pay the amount dued ($X.YZ)"));
+  total.textContent ="Total: $" + cash
+  // cashRegister(price, cash,[
+  //   ["PENNY", 1.01],
+  //   ["NICKEL", 2.05],
+  //   ["DIME", 3.1],
+  //   ["QUARTER", 4.25],
+  //   ["ONE", 90],
+  //   ["FIVE", 55],
+  //   ["TEN", 20],
+  //   ["TWENTY", 60],
+  //   ["ONE HUNDRED", 100],
+  // ]);
 })
