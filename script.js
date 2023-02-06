@@ -325,13 +325,13 @@ checkout.addEventListener('click', () => {
 
 
 
-// const smake = document.querySelector('#SMAKE')
+ const smake = document.querySelector('#SMAKE')
 
 
 
-// smake.addEventListener('click', () => {
-//   let cashIng = smake.outerText.substring(1);
-//   price += Number (cashIng);
-//   console.log(cashIng);
-//   total.textContent =`Total: $` + Number(price).toFixed(2);
-// })
+smake.addEventListener('click', () => {
+   let cashIng = smake.outerText.substring(1);
+   price += Number (cashIng);
+   console.log(cashIng);
+   total.textContent =`Total: $` + Number(price).toFixed(2);
+ })
