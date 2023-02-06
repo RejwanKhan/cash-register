@@ -15,10 +15,12 @@ body {
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
     padding: 10px;
     font-family: "Kanit";
+    height: 10vh;
+    width: 100%;
 }
 
 h4 {
@@ -28,7 +30,7 @@ h4 {
 header {
     background-color: #59C9A5;
     margin: 0 auto;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
     
 }
 
@@ -48,9 +50,9 @@ header {
 }
 
 .chocolate {
-    width: 320px;
-    height: 320px;
-    margin: 2rem 3rem;
+    width: 8rem;
+    height: 8rem;
+    margin: 5rem 5rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -58,6 +60,7 @@ header {
     font-weight: bold;
     font-size: 2rem;
     color: black;
+    
 }
 .chocolate:hover{
     transform: translateY(-10%);
@@ -69,6 +72,7 @@ img {
     margin: auto;
     box-shadow: 10px 10px 10px grey;
     margin-bottom: 8px;
+    width: 100%;
 }
 
 
@@ -88,9 +92,76 @@ img {
 label{
     display:block;
     border-top: 10px dashed #59C9A5;
+    border-bottom: 10px dashed #59C9A5;
     width: 100vw;
     margin-top: 10px;
     margin-left: 20px;
     font-size: 68px;
+    margin-bottom: 5%;
+
+}
+
+#receipt li {
+    font-size: 56px;
+    list-style: none;
+    background-color: white;
+    color: black;
+    padding-left: 15px;
+    
+}
+
+#receipt {
+    border: 15px solid #59C9A5;
+    margin-left: 20px;
+    width: 40%;
+    border-radius: 10px;
+    margin: auto;
+
+}
+
+.titleReceipt {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.total{
+    font-weight: bold;
+}
+
+.teamMembers, .teamMembers li{
+    text-align: center;
+    font-size: 5rem;
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.teamMembers li:hover {
+    text-shadow: 5px 5px  #eeb300;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+footer{
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 80%);
+    background: -webkit-linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 80%);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#040000",GradientType=1);
+    border-top: 2px solid #23395B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    border-bottom: 5px solid black;
+    font-family: 'Kanit';
+ 
+}
+
+h1{
 
 }
