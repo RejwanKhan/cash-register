@@ -5,31 +5,6 @@ const cashRegister = (price, cash, cid) => {
     cid.reduce((acc, val) => acc + val[1], 0).toFixed(2)
   );
 
-  if (cashInDrawValue === change) {
-    return { status: "CLOSED", change: cid };
-  }
-
-  if (cash < price) {
-    return { status: "INCORRECT_PAYMENT", change: [] };
-  }
-
-  if (cashInDrawValue < change) {
-    return { status: "INSUFFICIENT_FUNDS", change: [] };
-  }
-
-  if (cashInDrawValue > change) {
-    const fixedCurrencyValue = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100];
-    let emArr = [];
-    for (let i = 0; i < cid.length; i++) {
-      if (cid[i][1] !== 0 && cid[i][1] / fixedCurrencyValue[i] > 1) {
-        emArr.push(change / cid[i]);
-      }
-      if (emArr.length === 0) {
-        return { status: "INSUFFICIENT_FUNDS", change: [] };
-      }
-    }
-  }
-
   if (cashInDrawValue > change) {
     let changeAlternatives = [];
 
@@ -82,7 +57,7 @@ const cashRegister = (price, cash, cid) => {
   }
 };
 
-//TESTCASES
+// => {status: "OPEN", change: [["QUARTER", 0.5]]}
 
 // console.log(
 //   cashRegister(3.26, 100, [
@@ -97,9 +72,50 @@ const cashRegister = (price, cash, cid) => {
 //     ["ONE HUNDRED", 100],
 //   ])
 // );
-/*
 
-{status: "OPEN", change: [["QUARTER"]}
+cashRegister(19.5, 18, [
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100],
+]);
+// => {status: "INCORRECT_PAYMENT", change: []}
+
+console.log(
+  cashRegister(19.5, 20, [
+    ["PENNY", 1.01],
+    ["NICKEL", 2.05],
+    ["DIME", 3.1],
+    ["QUARTER", 4.25],
+    ["ONE", 90],
+    ["FIVE", 55],
+    ["TEN", 20],
+    ["TWENTY", 60],
+    ["ONE HUNDRED", 100],
+  ])
+);
+
+// => {status: "OPEN", change: [["QUARTER", 0.5]]}
+
+console.log(
+  cashRegister(3.26, 100, [
+    ["PENNY", 1.01],
+    ["NICKEL", 2.05],
+    ["DIME", 3.1],
+    ["QUARTER", 4.25],
+    ["ONE", 90],
+    ["FIVE", 55],
+    ["TEN", 20],
+    ["TWENTY", 60],
+    ["ONE HUNDRED", 100],
+  ])
+);
+/*
 {
   status: "OPEN",
   change: [
@@ -115,23 +131,3 @@ const cashRegister = (price, cash, cid) => {
   ]
 }
 */
-
-// => {status: "OPEN", change: [["QUARTER", 0.5]]}
-/* 
-{
-  status: "CLOSED",
-  change: [
-    ["PENNY", 0.5],
-    ["NICKEL", 0],
-    ["DIME", 0],
-    ["QUARTER", 0],
-    ["ONE", 0],
-    ["FIVE", 0],
-    ["TEN", 0],
-    ["TWENTY", 0],
-    ["ONE HUNDRED", 0]
-  ]
-}
-*/
-// => {status: "INSUFFICIENT_FUNDS", change: []}
-// => {status: "INCORRECT_PAYMENT", change: []}
