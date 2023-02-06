@@ -81,8 +81,9 @@ img {
 }
 
 #SMAKE {
-    color: #23395B;
+    color: #ffffff;
     background-color: #23395B;
+    text-align: center;
 }
 
 .checkout{
@@ -152,7 +153,16 @@ a {
     text-decoration: none;
 }
 
-
+.enterCID {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+#cid {
+    font-size: 35px;
+    width: 50%;
+    color: black;
+}
 footer{
     background: rgba(89,201,165,1);
     background: -moz-linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 95%);
@@ -168,6 +178,9 @@ h2{
  
 }
 #Lol {
-    color:#23395B;
+    color: #59C9A5;
+    background-color: #59C9A5;
+    width: 4%;
+    margin: auto;
 }
 

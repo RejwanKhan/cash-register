@@ -272,13 +272,13 @@ const totalPrice = []
 
 
 checkout.addEventListener('click', () => {
+  let cid = document.getElementById("cid").value;
+  console.log(cid);
+  let results;
   let cash = Number(prompt("Please pay the amount dued ($X.YZ)"));
-  //total.textContent ="Total: $" + cash
-  console.log("Price: $", price);
-  console.log("Cash: $", cash);
-  
-
-     let results = cashRegister(price, cash, [
+  if (cid === "") {
+    //console.log("Error");
+     results = cashRegister(price, cash, [
       ["PENNY", 1.01],
       ["NICKEL", 2.05],
       ["DIME", 3.1],
@@ -289,6 +289,17 @@ checkout.addEventListener('click', () => {
       ["TWENTY", 60],
       ["ONE HUNDRED", 100],
     ]);
+  } else {
+   // console.log("Success");
+    results = cashRegister(price, cash, JSON.parse(cid));
+  }
+  
+  //total.textContent ="Total: $" + cash
+  //console.log("Price: $", price);
+  //console.log("Cash: $", cash);
+  
+
+     
     console.log(results);
     let test = results.change;
     let changeRes = "";
@@ -297,6 +308,14 @@ checkout.addEventListener('click', () => {
       //console.log(i);
       changeRes = changeRes + `${i} `;
     }
+    let totalChange = 0;
+
+    for(i of test) {
+      //console.log(i[1]);
+      totalChange = totalChange + Number(i[1]);
+    }
+    //console.log("Total Change",totalChange);
+
     const totalCost = document.querySelector(".totalCost");
     totalCost.textContent = total.textContent;
 
@@ -308,6 +327,9 @@ checkout.addEventListener('click', () => {
 
     const outcome = document.querySelector(".outcome");
     outcome.textContent = "Change: " + changeRes;
+
+    const ttChange = document.querySelector(".totalChange");
+    ttChange.textContent = "Total Change: $" + totalChange;
     
   // cashRegister(price, cash,[
   //   ["PENNY", 1.01],
