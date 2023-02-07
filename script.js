@@ -306,7 +306,7 @@ checkout.addEventListener('click', () => {
     //console.log(test);
     for (i of test) {
       //console.log(i);
-      changeRes = changeRes + `${i} `;
+      changeRes = changeRes + `${i[0]} : $${i[1]}, `; 
     }
     let totalChange = 0;
 
@@ -328,8 +328,9 @@ checkout.addEventListener('click', () => {
     const outcome = document.querySelector(".outcome");
     outcome.textContent = "Change: " + changeRes;
 
+  
     const ttChange = document.querySelector(".totalChange");
-    ttChange.textContent = "Total Change: $" + totalChange;
+    ttChange.textContent = "Total Change: $" + Number(totalChange).toFixed(2);
     
   // cashRegister(price, cash,[
   //   ["PENNY", 1.01],

@@ -9,9 +9,10 @@
 }
 
 body {
-    margin: 0 auto;
+    width: 100%;
     background-color: rgb(196, 181, 181);
     background-color: #23395B;
+    overflow-y: none;
 }
 
 h1 {
@@ -21,6 +22,7 @@ h1 {
     font-family: "Kanit";
     height: 10vh;
     width: 100%;
+    
 }
 
 h4 {
@@ -29,8 +31,9 @@ h4 {
 
 header {
     background-color: #59C9A5;
-    margin: 0 auto;
+    margin:  auto;
     margin-bottom: 4rem;
+    width:100%;
     
 }
 
@@ -103,9 +106,9 @@ label{
     display:block;
     border-top: 10px dashed #59C9A5;
     border-bottom: 10px dashed #59C9A5;
-    width: 100vw;
+    width: 100%;
     margin-top: 10px;
-    margin-left: 20px;
+     
     font-size: 40px;
     margin-bottom: 5%;
 
@@ -136,13 +139,15 @@ label{
 
 .total{
     font-weight: bold;
+    text-align:start;
+    
 }
 
 .teamMembers, .teamMembers li{
     text-align: center;
     font-size: 2rem;
     list-style: none;
-    padding-left: 2rem;
+    
 }
 
 .teamMembers li:hover {
@@ -159,11 +164,13 @@ a {
     margin-bottom: 40px;
 }
 #cid {
-    font-size: 35px;
-    width: 50%;
+    font-size: 30px;
+    width: 72%;
     color: black;
+    text-align: center;
 }
 footer{
+    text-align: left;
     background: rgba(89,201,165,1);
     background: -moz-linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 95%);
     background: -webkit-linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(89,201,165,1) 50%, rgba(4,0,0,1) 95%);
@@ -180,7 +187,7 @@ h2{
 #Lol {
     color: #59C9A5;
     background-color: #59C9A5;
-    width: 4%;
+    width: 5%;
     margin: auto;
 }
 
